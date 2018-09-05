@@ -1,0 +1,55 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  color: #232425;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.converter {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color:#6ed294;
+}
+
+.converter label {
+  width: 8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.converter input {
+  width: 6rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid #355d44
+}
+.odds,
+.wager,
+.profit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.desc {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #355d44;
+}
+
+.messages {
+  margin-bottom: 1rem;
+  color: #ea3e3e;
+  font-weight: bold;
+}
