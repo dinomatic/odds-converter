@@ -7,35 +7,36 @@
 /**
  * must contain only numbers and a "/" and "/" must not be the first or last char
  */
-const validateFractionalOdds = (input: string): boolean => RegExp(/^\d+\/\d+$/).test(input)
+const validateFractionalOdds = (value: string): boolean => RegExp(/^\d+\/\d+$/).test(value)
 
 /**
  * the abs value should be >= 100,
  * must contain only digits and "+"/"-" signs at the beginning
  */
-const validateAmericanOdds = (input: string): boolean => {
-  return (RegExp(/^[+-]*\d+\.*\d*$/).test(input) && Math.abs(parseInt(input)) > 100)
+const validateAmericanOdds = (value: string): boolean => {
+  return (RegExp(/^[+-]*\d+\.*\d*$/).test(value) && Math.abs(parseInt(value)) > 100)
 }
 
 /**
  * must be a positive number greater than 1
  */
-const validateDecimalOdds = (input: string): boolean => (RegExp(/^\d+\.*\d*$/).test(input) && parseFloat(input) > 1)
+const validateDecimalOdds = (value: string): boolean => (RegExp(/^\d+\.*\d*$/).test(value) && parseFloat(value) > 1)
+
 
 /**
  * a wrapper for validation functions
  */
-const validateInputs = (elem: string, input: string): boolean => {
+const validateInputs = (elem: string, value: string): boolean => {
   let isValid = false
   switch (elem) {
     case 'american':
-      isValid = validateAmericanOdds(input)
+      isValid = validateAmericanOdds(value)
       break
     case 'fractional':
-      isValid = validateFractionalOdds(input)
+      isValid = validateFractionalOdds(value)
       break
     case 'decimal':
-      isValid = validateDecimalOdds(input)
+      isValid = validateDecimalOdds(value)
       break
   }
 

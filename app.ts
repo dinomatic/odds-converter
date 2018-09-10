@@ -22,33 +22,28 @@
   const decimalInput = <HTMLInputElement>document.getElementById('decimal')
   const wagerInput = <HTMLInputElement>document.getElementById('wager')
   const profitInput = <HTMLInputElement>document.getElementById('profit')
-
-  wagerInput.addEventListener('change', () => {
-    const currentWager = wagerInput.value
-    const currentProfit = profitInput.value
-    const prevWager = wagerInput.dataset.wager
-    const profit = parseFloat(currentWager) * (parseFloat(currentProfit) / parseFloat(prevWager))
-    profitInput.value = profit.toString()
-    wagerInput.dataset.wager = currentWager
-  })
+  const msgSpan = document.getElementById('message')
 
   const oddsInputs = [americanInput, fractionalInput, decimalInput]
   oddsInputs.forEach(input => {
     input.addEventListener('change', () => {
-      // remove previous error formatings
+      // remove previous error highlighting
       removeMessagesAndHighlight()
 
       // replace commas with dots
       replaceComma(input)
 
-      const odds = input.value
-      const wager = wagerInput.value ? parseFloat(wagerInput.value) : 100
-      const selected = input.dataset.type
+      // validate wager
+      const wagerAmount = wagerInput.value
+      if (!validateWager(wagerAmount)) return false
+      const wager = parseFloat(wagerAmount)
 
-      // validate inputs
+      // validate odds
+      const selected = input.dataset.type
+      const odds = input.value
       if (!validateInputs(selected, odds)) {
         highlightInput(input)
-        showHelpMessage(input)
+        showWrongFormatMessage(selected)
         return false
       }
 
@@ -98,34 +93,57 @@
     })
   })
 
-  const formatMessages = {
-    american: 'Valid odds values: +120, -200, 145',
-    decimal: 'Valid odds valus: 2, 2.4, 1.65',
-    fractional: 'Valid odds valus: 11/4, 1/3'
+  wagerInput.addEventListener('change', () => {
+    if (!validateWager(wagerInput.value)) return false
+
+    const currentWager = wagerInput.value
+    const currentProfit = profitInput.value
+
+    if (currentProfit !== '') {
+      const prevWager = wagerInput.dataset.wager
+      const profit = parseFloat(currentWager) * (parseFloat(currentProfit) / parseFloat(prevWager))
+      profitInput.value = profit.toString()
+    }
+
+    wagerInput.dataset.wager = currentWager
+  })
+
+  const validateWager = (value: string): boolean => {
+    if (parseFloat(value) <= 0) {
+      highlightInput(wagerInput)
+      return false
+    } else {
+      removeHighlightInput(wagerInput)
+      return true
+    }
   }
 
-  const showHelpMessage = (input: HTMLInputElement) => {
-    const type = input.dataset.type
-    const msgSpan = document.getElementById('message')
-    const msg = document.createTextNode(formatMessages[type])
+  const showWrongFormatMessage = (format: string): void => {
+    const validOddsValues = {
+      american: '+120, -200, 145',
+      decimal: '2, 2.4, 1.65',
+      fractional: '11/4, 1/3, 2/5',
+    }
+    const msg = document.createTextNode(`ℹ️ Valid odds values: ${validOddsValues[format]}`)
     msgSpan.appendChild(msg)
-    msgSpan.classList.add('opacity-100')
   }
 
-  const highlightInput = (input: HTMLInputElement) => {
-    input.classList.add('border', 'border-red')
+  const highlightInput = (input: HTMLInputElement): void => {
+    input.classList.add('highlight')
   }
 
-  const removeMessagesAndHighlight = () => {
+  const removeHighlightInput = (input: HTMLInputElement): void => {
+    input.classList.remove('highlight')
+  }
+
+  const removeMessagesAndHighlight = (): void => {
     oddsInputs.forEach(input => {
-      input.classList.remove('border', 'border-red')
+      removeHighlightInput(input)
     })
-    const msgSpan = document.getElementById('message')
     msgSpan.innerHTML = ''
-    msgSpan.classList.remove('opacity-100')
   }
 
-  const replaceComma = (input: HTMLInputElement) => {
+  const replaceComma = (input: HTMLInputElement): void => {
     input.value = (input.value).replace(',', '.')
   }
 })()
