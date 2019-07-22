@@ -9,43 +9,51 @@
 </head>
 <body>
 
-	<div id="converter" class="converter">
+	<div class="container">
 
-		<h1>Odds Converter</h1>
+		<div id="converter" class="converter">
 
-		<div class="odds">
-			<label for="americal">American</label>
-			<input id="american" data-type="american" type="text" placeholder="+120" />
+			<h3 class="converter--title">Odds Converter</h3>
+
+			<p class="converter--desc">Convert values between American, Fractional and Decimal Odds.</p>
+
+			<div class="converter--odds">
+				<label for="american" class="converter--label">American</label>
+				<input id="american" class="converter--input" data-type="american" type="text" placeholder="+120" />
+			</div>
+
+			<div class="converter--odds">
+				<label for="fractional" class="converter--label">Fractional</label>
+				<input id="fractional" class="converter--input" data-type="fractional" type="text" placeholder="6/5" />
+			</div>
+
+			<div class="converter--odds">
+				<label for="decimal" class="converter--label">Decimal</label>
+				<input id="decimal" class="converter--input" data-type="decimal" type="text" placeholder="2.20" />
+			</div>
+
+			<div class="converter--messages">
+				<span id="converter--warning"></span>
+			</div>
+
+			<div class="converter--wager">
+				<label for="wager" class="converter--label">Stake ($)</label>
+				<input id="wager" class="converter--input" value="100" data-wager="100" type="number"/>
+			</div>
+
+			<div class="converter--profit">
+				<label for="profit" class="converter--label">Net Profit ($)</label>
+				<input id="profit" class="converter--input" type="text" placeholder="?" readonly />
+			</div>
+
+			<p class="converter--credits">
+				Odds Converter By
+				<a href="https://dinomatic.com" rel="nofollow,noopenner">DinoMatic</a>
+			</p>
 		</div>
-
-		<div class="odds">
-			<label for="fractional">Fractional</label>
-			<input id="fractional" data-type="fractional" type="text" placeholder="6/5" />
-		</div>
-
-		<div class="odds">
-			<label for="decimal">Decimal</label>
-			<input id="decimal" data-type="decimal" type="text" placeholder="2.20" />
-		</div>
-
-		<div class="messages">
-			<span id="message"></span>
-		</div>
-
-		<div class="wager">
-			<label for="wager">Stake ($)</label>
-			<input id="wager" value="100" data-wager="100" type="number"/>
-		</div>
-
-		<div class="profit">
-			<label for="profit">Net Profit ($)</label>
-			<input id="profit" type="text" placeholder="?" readonly />
-		</div>
-
-		<p class="desc">Convert values between American, Fractional and Decimal Odds.</p>
 
 	</div>
 
-	<script src="app.js" type="text/javascript"></script>
+	<script src="app.js"></script>
 </body>
 </html>

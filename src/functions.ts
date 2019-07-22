@@ -3,39 +3,36 @@
  * Helper functions for odds convertions.
  */
 
-interface FractionObject {
-  numerator: number
-  denominator: number
-}
+import { FractionObject } from './interfaces'
 
-const num = (value: number): string => { return value.toFixed(2) }
-const gcd = (x: number, y: number): number => (!y) ? x : gcd(y, x % y)
+const commaToDot = (str: string): string => str.replace(',', '.')
+const adjustSign = (str: string): string => str.indexOf('-') === -1 && str.indexOf('+') === -1 ? `+${str}` : str
 
-const fractionToObject = (frcation: string): FractionObject => {
-  const split = frcation.split('/')
-  const numerator = parseInt(split[0])
-  const denominator = parseInt(split[1])
+const num = (value: number): string => value.toFixed(2) // very unfortunate fn name. num returns string 🙃
+const gcd = (x: number, y: number): number => !y ? x : gcd(y, x % y)
 
-  return {
-    numerator: numerator,
-    denominator: denominator
-  }
+const fractionToDecimal = (fraction: FractionObject): number => fraction.numerator / fraction.denominator
+
+const fractionToObject = (fraction: string): FractionObject => {
+  const [numerator, denominator] = fraction.split('/').map(n => parseInt(n))
+  return { numerator, denominator }
 }
 
 const decimalToFraction = (decimal: number): FractionObject => {
   const numerator = (decimal - 1) * 10000
   const denominator = 10000
-
   return reduceFraction(Math.round(numerator), denominator)
 }
 
 const reduceFraction = (numerator: number, denominator: number): FractionObject => {
   const divisor = gcd(numerator, denominator)
-
   return {
     numerator: numerator / divisor,
     denominator: denominator / divisor
   }
 }
 
-export { num, gcd, fractionToObject, decimalToFraction, reduceFraction }
+const isProperFraction = (fraction: FractionObject) => fraction.numerator < fraction.denominator
+
+export { adjustSign, commaToDot, num, gcd,
+  fractionToObject, decimalToFraction, fractionToDecimal, isProperFraction, reduceFraction }

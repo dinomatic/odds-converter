@@ -1,6 +1,7 @@
 import 'mocha'
 import { assert } from 'chai'
-import { validateAmericanOdds, validateDecimalOdds, validateFractionalOdds } from '../src/validators'
+import { validateAmericanOdds, validateDecimalOdds,
+  validateFractionalOdds, validateWager } from '../src/validators'
 
 describe('#validateAmericanOdds function', () => {
   it('should be True for arguments "+300", "-200"', () => {
@@ -32,5 +33,16 @@ describe('#validateFractionalOdds function', () => {
     assert.isTrue(negative)
     const invalid = validateFractionalOdds("invalid")
     assert.isFalse(invalid)
+  })
+})
+
+describe('#validateWager function', () => {
+  it('should be True for arguments "200", False for "0", or "-200"', () => {
+    const positive = validateWager("200")
+    assert.isTrue(positive)
+    const negative = validateWager("-200")
+    assert.isFalse(negative)
+    const zero = validateWager("0")
+    assert.isFalse(zero)
   })
 })

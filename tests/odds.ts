@@ -1,6 +1,7 @@
 import 'mocha'
 import { assert } from 'chai'
-import { decimalFromAmerican, decimalFromFractional, americanFromDecimal, fractionalFromDecimal } from '../src/odds'
+import { decimalFromAmerican, decimalFromFractional,
+  americanFromDecimal, fractionalFromDecimal } from '../src/odds'
 
 describe('#decimalFromAmerican function', () => {
   it('should return "4.00" for argument 300', () => {
