@@ -1,5 +1,5 @@
 /**
- * File events.ts.
+ * File conversions.ts.
  * Odds input element changes related functions.
  */
 
@@ -52,4 +52,4 @@ const Convert = {
   decimal: (odds: string, wager: number) => onDecimalChange(odds, wager)
 }
 
-export { Convert }
+export { Convert, Conversion }

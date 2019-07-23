@@ -20,7 +20,7 @@ const validateWager = (value: string): boolean => parseFloat(value) > 0
 
 
 // a wrapper for validation functions
-const validateInputs = (elem: string, value: string): boolean => {
+const validateInput = (elem: string, value: string): boolean => {
   switch (elem) {
     case 'american':
       return validateAmericanOdds(value)
@@ -35,4 +35,4 @@ const validateInputs = (elem: string, value: string): boolean => {
   return false
 }
 
-export { validateInputs, validateFractionalOdds, validateAmericanOdds, validateDecimalOdds, validateWager }
+export { validateInput, validateFractionalOdds, validateAmericanOdds, validateDecimalOdds, validateWager }

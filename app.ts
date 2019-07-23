@@ -5,9 +5,9 @@
  * @package OddsConverter
  */
 
-import { Convert } from './src/conversions'
-import { validateInputs } from './src/validators'
+import { validateInput } from './src/validators'
 import { commaToDot, num } from './src/functions'
+import { Convert, Conversion } from './src/conversions'
 import { formatWarnings, highlight } from './src/formatting'
 
 (() => {
@@ -34,7 +34,7 @@ import { formatWarnings, highlight } from './src/formatting'
 
       // get the wager amount
       const wagerAmount = wagerInput.value
-      if (!validateInputs('wager', wagerAmount)) {
+      if (!validateInput('wager', wagerAmount)) {
         highlight(wagerInput, 'add')
         return false
       }
@@ -43,23 +43,23 @@ import { formatWarnings, highlight } from './src/formatting'
       // get the conversion type
       const type = input.dataset.type
       const odds = input.value
-      if (!validateInputs(type, odds)) {
+      if (!validateInput(type, odds)) {
         highlight(input, 'add')
         messageWrapper.appendChild(document.createTextNode(formatWarnings(type)))
         return false
       }
 
-      let conversion = Convert[type](odds, wager)
+      const conversion: Conversion = Convert[type](odds, wager)
       americanInput.value = conversion.american
       decimalInput.value = conversion.decimal
       fractionalInput.value = conversion.fractional
-      profitInput.value = num(parseFloat(conversion.profit))
+      profitInput.value = conversion.profit
     }
 
     const onWagerChange = () => {
       highlight(wagerInput, 'remove')
 
-      if (!validateInputs('wager', wagerInput.value)) {
+      if (!validateInput('wager', wagerInput.value)) {
         highlight(wagerInput, 'add')
         return false
       }
@@ -70,7 +70,7 @@ import { formatWarnings, highlight } from './src/formatting'
       if (currentProfit !== '') {
         const prevWager = wagerInput.dataset.wager
         const profit = parseFloat(currentWager) * (parseFloat(currentProfit) / parseFloat(prevWager))
-        profitInput.value = num(profit).toString()
+        profitInput.value = num(profit)
       }
 
       wagerInput.dataset.wager = currentWager
