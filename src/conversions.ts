@@ -5,10 +5,16 @@
 
 import * as getProfit from './profit'
 import { adjustSign } from './functions'
-import { ConversionObject } from './interfaces'
-import { decimalFromAmerican, decimalFromFractional, americanFromDecimal, fractionalFromDecimal } from '../src/odds'
+import { decimalFromAmerican, decimalFromFractional, americanFromDecimal, fractionalFromDecimal } from './odds'
 
-const onAmericanChange = (odds: string, wager: number): ConversionObject => {
+interface Conversion {
+  american: string
+  fractional: string
+  decimal: string
+  profit: string
+}
+
+const onAmericanChange = (odds: string, wager: number): Conversion => {
   const oddsFloat = parseFloat(odds)
   const oddsAdjusted = adjustSign(odds)
 
@@ -20,7 +26,7 @@ const onAmericanChange = (odds: string, wager: number): ConversionObject => {
   return { profit, american, decimal, fractional }
 }
 
-const onFractionalChange = (odds: string, wager: number): ConversionObject => {
+const onFractionalChange = (odds: string, wager: number): Conversion => {
   const profit = getProfit.fromFractional(wager, odds)
   const fractional = odds
   const decimal = decimalFromFractional(odds)
@@ -29,7 +35,7 @@ const onFractionalChange = (odds: string, wager: number): ConversionObject => {
   return { profit, american, decimal, fractional }
 }
 
-const onDecimalChange = (odds: string, wager: number): ConversionObject => {
+const onDecimalChange = (odds: string, wager: number): Conversion => {
   const oddsFloat = parseFloat(odds)
 
   const profit = getProfit.fromDecimal(wager, oddsFloat)
@@ -40,4 +46,10 @@ const onDecimalChange = (odds: string, wager: number): ConversionObject => {
   return { profit, american, decimal, fractional }
 }
 
-export { onAmericanChange, onFractionalChange, onDecimalChange }
+const Convert = {
+  american: (odds: string, wager: number) => onAmericanChange(odds, wager),
+  fractional: (odds: string, wager: number) => onFractionalChange(odds, wager),
+  decimal: (odds: string, wager: number) => onDecimalChange(odds, wager)
+}
+
+export { Convert }

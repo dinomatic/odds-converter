@@ -1,6 +1,5 @@
 /**
  * File odds.ts.
- *
  * Handles odds conversions.
  */
 

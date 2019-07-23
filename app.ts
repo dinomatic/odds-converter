@@ -1,16 +1,14 @@
 /**
- * File app.ts.
- * Handles odds value conversions and net profit calculations.
+ * Betting Odds Converter.
  *
  * @author DinoMatic https://dinomatic.com
  * @package OddsConverter
  */
 
-import { Conversion} from './src/interfaces'
+import { Convert } from './src/conversions'
 import { validateInputs } from './src/validators'
+import { commaToDot, num } from './src/functions'
 import { formatWarnings, highlight } from './src/formatting'
-import { commaToDot, adjustSign, num } from './src/functions'
-import { onAmericanChange, onFractionalChange, onDecimalChange } from './src/events'
 
 (() => {
   window.addEventListener('DOMContentLoaded', () => {
@@ -34,6 +32,7 @@ import { onAmericanChange, onFractionalChange, onDecimalChange } from './src/eve
       messageWrapper.innerHTML = ''
       input.value = commaToDot(input.value)
 
+      // get the wager amount
       const wagerAmount = wagerInput.value
       if (!validateInputs('wager', wagerAmount)) {
         highlight(wagerInput, 'add')
@@ -41,32 +40,20 @@ import { onAmericanChange, onFractionalChange, onDecimalChange } from './src/eve
       }
       const wager = parseFloat(wagerAmount)
 
-      const selected = input.dataset.type
+      // get the conversion type
+      const type = input.dataset.type
       const odds = input.value
-      if (!validateInputs(selected, odds)) {
+      if (!validateInputs(type, odds)) {
         highlight(input, 'add')
-        messageWrapper.appendChild(document.createTextNode(formatWarnings(selected)))
+        messageWrapper.appendChild(document.createTextNode(formatWarnings(type)))
         return false
       }
 
-      let conversionData = Object.create(Conversion)
-
-      switch (selected) {
-        case 'american':
-          conversionData = onAmericanChange(odds, wager)
-          break
-        case 'fractional':
-          conversionData = onFractionalChange(odds, wager)
-          break
-        case 'decimal':
-          conversionData = onDecimalChange(odds, wager)
-          break
-      }
-
-      americanInput.value = conversionData.american
-      decimalInput.value = conversionData.decimal
-      fractionalInput.value = conversionData.fractional
-      profitInput.value = num(parseFloat(conversionData.profit))
+      let conversion = Convert[type](odds, wager)
+      americanInput.value = conversion.american
+      decimalInput.value = conversion.decimal
+      fractionalInput.value = conversion.fractional
+      profitInput.value = num(parseFloat(conversion.profit))
     }
 
     const onWagerChange = () => {

@@ -1,9 +1,12 @@
 /**
  * File functions.ts
- * Helper functions for odds convertions.
+ * Helper functions.
  */
 
-import { FractionObject } from './interfaces'
+interface FractionObject {
+  numerator: number
+  denominator: number
+}
 
 const commaToDot = (str: string): string => str.replace(',', '.')
 const adjustSign = (str: string): string => str.indexOf('-') === -1 && str.indexOf('+') === -1 ? `+${str}` : str

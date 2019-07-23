@@ -1,6 +1,6 @@
 /**
  * File profit.ts.
- * Handles net profit calculations.
+ * Handles net profit calculation.
  */
 
 import { num, fractionToObject, fractionToDecimal } from './functions'
