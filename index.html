@@ -5,7 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Odds Converter</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="dist/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap" rel="stylesheet">
+
+	<link rel="canonical" href="https://oddsconverter.com">
+	<link rel="shortcut icon" href="/dist/icons/icon-128.png" type="image/x-icon">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="OddsConverter">
+	<link rel="apple-touch-icon" href="/dist/icons/icon-152.png">
+	<meta name="theme-color" content="#2b6cb0" />
 </head>
 <body>
 
@@ -54,6 +64,17 @@
 
 	</div>
 
-	<script src="app.js"></script>
+	<script src="dist/app.js"></script>
+	<script>
+	// Register the service worker.
+	if ('serviceWorker' in navigator && 'PushManager' in window) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js')
+				.then(reg => {
+					console.log('[Service worker registered]', reg)
+				})
+		})
+	}
+	</script>
 </body>
 </html>

@@ -2,7 +2,7 @@ import 'mocha'
 import { assert } from 'chai'
 import {
   adjustSign, commaToDot, num, gcd, fractionToObject, isProperFraction,
-  decimalToFraction, fractionToDecimal, reduceFraction } from '../src/functions'
+  decimalToFraction, fractionToDecimal, reduceFraction } from '../src/modules/functions'
 
 describe('#num function', () => {
   it('should return "4.00" for argument 4', () => {

@@ -5,10 +5,10 @@
  * @package OddsConverter
  */
 
-import { validateInput } from './src/validators'
-import { commaToDot, num } from './src/functions'
-import { Convert, Conversion } from './src/conversions'
-import { formatWarnings, highlight } from './src/formatting'
+import { validateInput } from './modules/validators'
+import { commaToDot, num } from './modules/functions'
+import { Convert, Conversion } from './modules/conversions'
+import { formatWarnings, highlight } from './modules/formatting'
 
 (() => {
   window.addEventListener('DOMContentLoaded', () => {

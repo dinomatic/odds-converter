@@ -1,6 +1,6 @@
 import 'mocha'
 import { assert } from 'chai'
-import * as profit from '../src/profit'
+import * as profit from '../src/modules/profit'
 
 describe('#fromAmerican function', () => {
   it('should return "300.00" for arguments (100, 300)', () => {

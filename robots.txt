@@ -1,0 +1,4 @@
+# robots.txt file for oddsconverter.com
+
+User-agent: *
+Allow: /
