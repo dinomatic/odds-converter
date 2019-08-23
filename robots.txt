@@ -1,4 +1,4 @@
-# robots.txt file for oddsconverter.com
+# robots.txt file for oddsconverter.pro
 
 User-agent: *
 Allow: /
