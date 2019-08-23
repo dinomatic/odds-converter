@@ -9,7 +9,7 @@ const validateFractionalOdds = (value: string): boolean => RegExp(/^\d+\/\d+$/).
 
 // the abs value should be >= 100, must contain only digits and "+"/"-" signs at the beginning
 const validateAmericanOdds = (value: string): boolean => {
-  return (RegExp(/^[+-]*\d+\.*\d*$/).test(value) && Math.abs(parseInt(value)) > 100)
+  return (RegExp(/^[+-]*\d+\.*\d*$/).test(value) && Math.abs(parseInt(value)) >= 100)
 }
 
 // must be a positive number greater than 1

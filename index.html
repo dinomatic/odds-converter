@@ -72,8 +72,8 @@
 			</div>
 
 			<p class="converter--credits">
-				Odds Converter By
-				<a href="https://dinomatic.com" rel="nofollow,noopenner">DinoMatic</a>
+				Odds Converter by
+				<a href="https://dinomatic.com" target="_blank" rel="noopenner,noreferrer">DinoMatic</a>
 			</p>
 		</div>
 
@@ -82,12 +82,10 @@
 	<script src="assets/app.js"></script>
 	<script>
 	// Register the service worker.
-	if ('serviceWorker' in navigator && 'PushManager' in window) {
+	if ('serviceWorker' in navigator) {
 		window.addEventListener('load', () => {
 			navigator.serviceWorker.register('/service-worker.js')
-				.then(reg => {
-					console.log('[Service worker registered]', reg)
-				})
+				.then(reg => console.log('[Service worker registered]', reg))
 		})
 	}
 	</script>
