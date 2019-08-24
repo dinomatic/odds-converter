@@ -1,5 +1,10 @@
+# Production files
 index.html
 service-worker.js
 manifest.json
 robots.txt
 /assets
+/embed
+
+# CLI command
+npm run pack

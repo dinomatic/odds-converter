@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Odds Converter | Convert Betting Odds | American, Fractional, Decimal</title>
 
-	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="assets/app.css">
 	<link href="https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap" rel="stylesheet">
 
 	<link rel="canonical" href="https://oddsconverter.pro">
@@ -71,13 +71,65 @@
 				<input id="profit" class="converter--input" type="text" placeholder="?" readonly />
 			</div>
 
-			<p class="converter--credits">
+			<p class="converter--footer">
 				Odds Converter by
 				<a href="https://dinomatic.com" target="_blank" rel="noopenner,noreferrer">DinoMatic</a>
+
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" /></svg>
+				<button class="converter--embed" aria-expanded="false">
+					<span>Embed</span>
+				</button>
+
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" /></svg>
+				<button class="converter--install" aria-expanded="false">
+					<span>Install</span>
+				</button>
+
 			</p>
 		</div>
 
 	</div>
+
+	<article id="embed" class="popup hidden" aria-hidden="true">
+		<h3>Embed the odds converter in your website</h3>
+
+		<section>
+			<label for="embed--result">Copy the result and paste into your website</label>
+			<textarea id="embed--result" class="embed--result"></textarea>
+		</section>
+		<section class="popup--columns">
+			<div>
+				<label for="embed--width">Width (px) <button class="embed--width__full">Make 100%</button></label>
+				<input type="number" id="embed--width" class="embed--width" value="600">
+			</div>
+			<div>
+				<label for="embed--height">Height (px) <button class="embed--height__full">Make 100%</button></label>
+				<input type="number" id="embed--height" class="embed--height" value="600">
+			</div>
+		</section>
+		<section>
+			<button id="embed--copy" class="embed--copy popup--action">Copy</button>
+			<button id="embed--close" class="embed--close popup--close" title="Close">x</button>
+		</section>
+	</article>
+
+	<article id="install" class="popup hidden" aria-hidden="true">
+		<h3>Install the app</h3>
+
+		<section>
+			<h4>MacOS</h4>
+			<p>Open the website in Google Chrome, click the (+) icon at the right side of the address bar.</p>
+
+			<h4>iOS</h4>
+			<p>Open the website in Safari, click the share icon and then 'Add to Home Screen'</p>
+
+			<h4>Other</h4>
+			<p>Search Google "How to install PWA on <em>YOUR DEVICE/OS</em>"</p>
+		</section>
+		<section>
+			<button id="install--close" class="install--close popup--close" title="Close">x</button>
+		</section>
+	</article>
 
 	<script src="assets/app.js"></script>
 	<script>
@@ -85,9 +137,11 @@
 	if ('serviceWorker' in navigator) {
 		window.addEventListener('load', () => {
 			navigator.serviceWorker.register('/service-worker.js')
-				.then(reg => console.log('[Service worker registered]', reg))
+			.then(reg => console.log('[Service worker registered]', reg))
 		})
 	}
 	</script>
+	<script src="assets/popup.js"></script>
+	<link rel="stylesheet" href="assets/popup.css">
 </body>
 </html>

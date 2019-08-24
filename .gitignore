@@ -12,3 +12,5 @@ dist/
 *.ntvs*
 *.njsproj
 *.sln
+
+.build

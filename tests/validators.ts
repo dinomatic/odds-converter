@@ -1,7 +1,7 @@
 import 'mocha'
 import { assert } from 'chai'
 import { validateAmericanOdds, validateDecimalOdds,
-  validateFractionalOdds, validateWager } from '../src/modules/validators'
+  validateFractionalOdds, validateWager } from '../src/js/modules/validators'
 
 describe('#validateAmericanOdds function', () => {
   it('should be True for arguments "+300", "-200"', () => {

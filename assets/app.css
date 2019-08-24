@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
@@ -16,6 +16,23 @@ body {
   font-family: inherit;
 }
 
+.hidden {
+  display: none;
+}
+
+a, a:visited {
+  color: #aae2e8;
+  transition: all .4s ease-in-out;
+}
+
+a:hover {
+  color: #4b797e;
+}
+
+p {
+  margin-top: 0;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -27,16 +44,8 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23cbd5e0' fill-opacity='0.03'%3E%3Cpath fill-rule='evenodd' d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-a, a:visited {
-  color: #FC8181;
-  transition: all .4s ease-in-out;
-}
-
-a:hover {
-  color: #C53030;
-}
-
 .converter {
+  position: relative;
   max-width: 600px;
   padding: 2rem;
   font-size: 1rem;
@@ -53,9 +62,9 @@ a:hover {
 }
 
 .converter--desc {
-  margin: 0;
+  margin: 0 0 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #b8c2cc;
+  border-bottom: 1px solid #aae2e8;
 }
 
 .converter--label {
@@ -88,18 +97,39 @@ a:hover {
 
 .converter--messages {
   margin-top: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-align: center;
   font-weight: bold;
 }
 
-.converter--credits {
-  margin-bottom: 0;
-  margin-top: 2rem;
-  text-align: right;
+.converter--footer {
+  margin: 2rem 0 0;
+  padding: 1rem 0 0;
   font-size: 0.75rem;
+  font-weight: 700;
+  border-top: 1px solid #aae2e8;
 }
 
-.converter--credits a {
+.converter--footer a, .converter--footer button {
+  text-decoration-line: underline;
+  text-decoration-color: #FC8181;
+  text-decoration-style: double;
+}
+
+.converter--footer button {
+  margin: 0.5rem 0 0;
+  padding: 0 0.25rem;
+  color: #aae2e8;
+  background: transparent;
+  border: 0 none;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.converter--footer svg {
+  fill: #FC8181;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.5rem;
+  vertical-align: -2px;
 }
