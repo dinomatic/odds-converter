@@ -29,7 +29,6 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "mocha -r ts-node/register tests/*.ts",
-    "styles": "cp src/css/app.css assets/ && cp src/css/popup.css assets/",
     "embed": "cp assets/app.js embed/ && cp assets/app.css embed/",
     "pack": "mkdir .build && cp index.html ./.build/ && cp service-worker.js ./.build/ && cp manifest.json ./.build/ && cp robots.txt ./.build/ && cp -R assets/ ./.build/assets/ && cp -R embed/ ./.build/embed/"
   },

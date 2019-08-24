@@ -17,9 +17,6 @@ npm run test
 # compile
 npm run build
 
-# copy styles
-npm run styles
-
 # copy embed files
 npm run embed
 

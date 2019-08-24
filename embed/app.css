@@ -111,25 +111,17 @@ p {
 }
 
 .converter--footer a, .converter--footer button {
+  margin: 0.5rem 0 0;
+  padding: 0 0.25rem;
   text-decoration-line: underline;
   text-decoration-color: #FC8181;
   text-decoration-style: double;
 }
 
 .converter--footer button {
-  margin: 0.5rem 0 0;
-  padding: 0 0.25rem;
   color: #aae2e8;
   background: transparent;
   border: 0 none;
   font-weight: 700;
   cursor: pointer;
-}
-
-.converter--footer svg {
-  fill: #FC8181;
-  width: 1em;
-  height: 1em;
-  margin-left: 0.5rem;
-  vertical-align: -2px;
 }

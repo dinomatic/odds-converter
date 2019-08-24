@@ -25,6 +25,9 @@
 .popup h4 {
   margin-bottom: 0.5rem;
   margin-top: 0;
+  text-decoration-line: underline;
+  text-decoration-color: #FC8181;
+  text-decoration-style: double;
 }
 
 .popup section {
@@ -76,6 +79,7 @@
   font-size: 1rem;
   font-weight: 700;
   background-color: #fff;
+  border: 0 none;
 }
 
 .popup--action {
