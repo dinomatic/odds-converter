@@ -46,7 +46,7 @@
   const VALUE = 600
   const state = { width: VALUE, height: VALUE }
   const setResult = ({ width, height }) => {
-    embedResult.value = `<iframe src="https://odds-converter.test/embed/" width="${width}" height="${height}" frameborder="0"></iframe>`
+    embedResult.value = `<iframe src="https://oddsconverter.pro/embed/" width="${width}" height="${height}" frameborder="0"></iframe>`
   }
 
   // Event Listeners -> Embed.
