@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Odds Converter | Convert Betting Odds | American, Fractional, Decimal</title>
+
+	<link rel="stylesheet" href="app.css">
+	<link href="https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<section class="container">
+
+		<article id="converter" class="converter">
+
+			<h3 class="converter--title">Odds Converter</h3>
+
+			<p class="converter--desc">Convert values between American, Fractional and Decimal Odds.</p>
+
+			<div class="converter--odds">
+				<label for="american" class="converter--label">American</label>
+				<input id="american" class="converter--input" data-type="american" type="text" placeholder="+120" />
+			</div>
+
+			<div class="converter--odds">
+				<label for="fractional" class="converter--label">Fractional</label>
+				<input id="fractional" class="converter--input" data-type="fractional" type="text" placeholder="6/5" />
+			</div>
+
+			<div class="converter--odds">
+				<label for="decimal" class="converter--label">Decimal</label>
+				<input id="decimal" class="converter--input" data-type="decimal" type="text" placeholder="2.20" />
+			</div>
+
+			<div class="converter--messages">
+				<span id="converter--warning"></span>
+			</div>
+
+			<div class="converter--wager">
+				<label for="wager" class="converter--label">Stake ($)</label>
+				<input id="wager" class="converter--input" value="100" data-wager="100" type="number" />
+			</div>
+
+			<div class="converter--profit">
+				<label for="profit" class="converter--label">Net Profit ($)</label>
+				<input id="profit" class="converter--input" type="text" placeholder="?" readonly />
+			</div>
+
+			<p class="converter--footer">
+				Odds Converter by
+				<a href="https://dinomatic.com" target="_blank" rel="nofollow,noopenner,noreferrer">DinoMatic</a>
+			</p>
+		</article>
+
+	</section>
+	<script src="app.js"></script>
+</body>
+
+</html>

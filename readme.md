@@ -21,5 +21,5 @@ npm run build
 npm run embed
 
 # copy production files
-npm run pack
+npm run make
 ```
