@@ -1,6 +1,6 @@
 'use strict'
 
-const CACHE_NAME = 'site-cache-v1'
+const CACHE_NAME = 'site-cache-v2'
 
 self.addEventListener('install', (e) => {
   self.skipWaiting()
