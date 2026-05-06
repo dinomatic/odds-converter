@@ -1,5 +1,5 @@
-import 'mocha'
-import { assert } from 'chai'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 import { decimalFromAmerican, decimalFromFractional,
   americanFromDecimal, fractionalFromDecimal } from '../src/js/modules/odds'
 

@@ -1,5 +1,5 @@
-import 'mocha'
-import { assert } from 'chai'
+import { describe, it } from 'node:test'
+import assert from 'node:assert/strict'
 import {
   adjustSign, commaToDot, num, gcd, fractionToObject, isProperFraction,
   decimalToFraction, fractionToDecimal, reduceFraction } from '../src/js/modules/functions'
@@ -59,9 +59,9 @@ describe('#fractionToDecimal function', () => {
 describe('#isProperFraction function', () => {
   it('should return True for argument {3, 4}', () => {
     const proper = isProperFraction({ numerator: 3, denominator: 4 })
-    assert.isTrue(proper)
+    assert.equal(proper, true)
     const improper = isProperFraction({ numerator: 4, denominator: 3 })
-    assert.isFalse(improper)
+    assert.equal(improper, false)
   })
 })
 
@@ -82,4 +82,3 @@ describe('#adjustSign function', () => {
     assert.equal(minus, '-200')
   })
 })
-
