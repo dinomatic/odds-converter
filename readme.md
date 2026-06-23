@@ -1,7 +1,7 @@
 # Betting Odds Converter
 
-Converts American, Fractional and Decimal odds.
-Also calculates the net profit given the stake.
+Converts American, Fractional and Decimal odds. Also calculates the net profit
+given the stake.
 
 ## Installation
 
@@ -12,7 +12,7 @@ Fork or clone the repository and install npm dependencies `npm install`.
 npm start
 
 # test
-npm run test
+npm test
 
 # compile
 npm run build
@@ -23,3 +23,15 @@ npm run embed
 # copy production files
 npm run make
 ```
+
+## Cloudflare Pages
+
+Use these build settings in Cloudflare Pages:
+
+- Build command: `npm run build && npm run embed && npm run make`
+- Build output directory: `.build`
+
+## Build Notes
+
+This project uses `esbuild` for bundling. The deployable static site is
+assembled into `.build/` by `npm run make`.
